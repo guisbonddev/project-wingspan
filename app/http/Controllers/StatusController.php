@@ -9,11 +9,13 @@ class StatusController extends Controller
     // Function for NAS Status
     public function view(){
 
-    	$nas_r = \App\NAS::get();
+    	$nas = \App\NAS::get();
+    	$ground = \App\Ground::get();
+    	$delay = \App\Delay::get();
+
     	$reasons = \App\Reason::get();
 
-    	return view('welcome', compact('nas_r','reasons'));
-
+    	return view('welcome', compact('nas','ground','delay','reasons'));
 
     }
 
