@@ -25,7 +25,7 @@
         </li>
       </ul>
       <span class="navbar-text">
-        <a href="">Admin</a>
+        <a href="/admin">Admin</a>
       </span>
     </div>
   </div>

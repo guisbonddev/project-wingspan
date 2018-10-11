@@ -13,6 +13,38 @@
   </head>
   <body>
     @include('partials.nav')
+      <br><br>
+
+    <div class="row">
+      @include('admin.nav')
+      <div class="col-md-10">
+        <div class="card">
+          <div class="card-body">
+            <h2>Reasons</h2>
+            <hr>
+              <p>This OIS system is based off of a set number of conjunctive reasons that belong to different categories within the system. This is designed in an effort to maintain realism across all records and allow for customization. Manage reason categories below.</p>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Reason</th>
+                  <th>Category</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              @foreach ($reasons as $reason)
+              <tr>
+                <td>{{$reason->id}}</td>
+                <td>{{$reason->name}}</td>
+                <td>{{$reason->category}}</td>
+                <td><a href="#"><span class="badge badge-success" data-toggle="modal" data-target="#nas_modal">Edit</span></td>
+              </tr>
+              @endforeach
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <!-- Optional JavaScript -->

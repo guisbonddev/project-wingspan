@@ -39,7 +39,7 @@
                         <td>{{$nas->start}}</td>
                         <td>{{$nas->end}}</td>
                         <td>{{$nas->scope}}</td>
-                        <td>{{$nas->reasons->name}}</td>
+                        <td>{{$nas->reasons->category}} / {{$nas->reasons->name}}</td>
                         <td>{{$nas->avg}}</td>
                         <td>{{$nas->aar}}</td>
                         <td>{{$nas->pr}}</td>
@@ -83,7 +83,7 @@
                                     <label for="exampleFormControlSelect2">Reason</label>
                                     <select  class="form-control" id="exampleFormControlSelect2">
                                         @foreach ($reasons as $reason)
-                                          <option>{{$reason->name}}</option>
+                                          <option>{{$reason->name}} ({{$reason->category}})</option>
                                         @endforeach
                                     </select>
                                   </div>
@@ -136,7 +136,7 @@
                         <td>{{$ground->airport}}</td>
                         <td>{{$ground->time}}</td>
                         <td>{{$ground->scope}}</td>
-                        <td>{{$ground->reasons->name}}</td>
+                        <td>{{$ground->reasons->category}} / {{$ground->reasons->name}}</td>
                         <td><a href="#"><span class="badge badge-success" data-toggle="modal" data-target="#ground_modal">Edit</span></a></td>
                     </tr>
 
@@ -169,7 +169,7 @@
                                 <label for="exampleFormControlSelect2">Reason</label>
                                 <select  class="form-control" id="exampleFormControlSelect2">
                                     @foreach ($reasons as $reason)
-                                      <option>{{$reason->name}}</option>
+                                      <option>{{$reason->name}} ({{$reason->category}})</option>
                                     @endforeach
                                 </select>
                               </div>
@@ -208,7 +208,7 @@
                         <td>{{$delay->ad}}</td>
                         <td>{{$delay->dd}}</td>
                         <td>{{$delay->time}}</td>
-                        <td>{{$delay->reasons->name}}</td>
+                        <td>{{$delay->reasons->category}} / {{$delay->reasons->name}}</td>
                         <td><a href="#"><span class="badge badge-success" data-toggle="modal" data-target="#delay_modal">Edit</span></a></td>
                     </tr>      
 
@@ -245,7 +245,7 @@
                                 <label for="exampleFormControlSelect2">Reason</label>
                                 <select  class="form-control" id="exampleFormControlSelect2">
                                     @foreach ($reasons as $reason)
-                                      <option>{{$reason->name}}</option>
+                                      <option>{{$reason->name}} ({{$reason->category}})</option>
                                     @endforeach
                                 </select>
                               </div>
