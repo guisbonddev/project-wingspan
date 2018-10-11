@@ -12,3 +12,11 @@
 */
 
 Route::get('/', 'StatusController@view');
+
+Route::get('/admin', function () {
+    return view('admin.admin');
+});
+
+Route::get('/admin/reasons', 'AdminController@reasons');
+
+Route::get('/admin/create', 'AdminController@create');
