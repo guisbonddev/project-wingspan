@@ -33,7 +33,7 @@
                             <th>Actions</th>
                         </tr>  
                     </thead> 
-                    @foreach ($nas_r as $nas)
+                    @foreach ($nas as $nas)
                     <tr>
                         <td>{{$nas->airport}}</td>
                         <td>{{$nas->start}}</td>
@@ -43,13 +43,13 @@
                         <td>{{$nas->avg}}</td>
                         <td>{{$nas->aar}}</td>
                         <td>{{$nas->pr}}</td>
-                        <td><a href="#"><span class="badge badge-success" data-toggle="modal" data-target="#exampleModal">Edit</span></a></td>
+                        <td><a href="#"><span class="badge badge-success" data-toggle="modal" data-target="#nas_modal">Edit</span></a></td>
                     </tr>
 
                     <!-- NAS Edit Form MODAL -->
 
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog" role="document">
+                    <div class="modal fade" id="nas_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Edit: National Airspace System</h5>
@@ -59,41 +59,47 @@
                           </div>
                           <div class="modal-body">
                             <form>
-                              <div class="form-group">
-                                <label for="exampleFormControlInput1">Program Name</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->airport}}">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleFormControlInput1">Start Time</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->start}}">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleFormControlInput1">End Time</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->end}}">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleFormControlInput1">Scope</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->scope}}">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleFormControlSelect2">Reason</label>
-                                <select multiple class="form-control" id="exampleFormControlSelect2">
-                                    @foreach ($reasons as $reason)
-                                      <option>{{$reason->name}}</option>
-                                    @endforeach
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleFormControlInput1">Average</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->avg}}">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleFormControlInput1">Arrival Rate</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->aar}}">
-                              </div>
-                              <div class="form-group">
-                                <label for="exampleFormControlInput1">PR</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->pr}}">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label for="exampleFormControlInput1">Program Name</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->airport}}">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlInput1">Start Time</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->start}}">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlInput1">End Time</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->end}}">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlInput1">Scope</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->scope}}">
+                                  </div>
+                                  </div>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label for="exampleFormControlSelect2">Reason</label>
+                                    <select  class="form-control" id="exampleFormControlSelect2">
+                                        @foreach ($reasons as $reason)
+                                          <option>{{$reason->name}}</option>
+                                        @endforeach
+                                    </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlInput1">Average</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->avg}}">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlInput1">Arrival Rate</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->aar}}">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlInput1">PR</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$nas->pr}}">
+                                  </div>
+                                </div>
                               </div>
                             </form>
                           </div>
@@ -115,7 +121,6 @@
             <center>
                 <br><br>
                 <h3>Ground Stops</h3>
-                <a href="#"><span class="badge badge-success" data-toggle="modal" data-target="#exampleModal">Edit</span></a>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -126,9 +131,59 @@
                             <th>Actions</th>
                         </tr>  
                     </thead> 
+                    @foreach ($ground as $ground)
                     <tr>
-                        <td></td>
+                        <td>{{$ground->airport}}</td>
+                        <td>{{$ground->time}}</td>
+                        <td>{{$ground->scope}}</td>
+                        <td>{{$ground->reasons->name}}</td>
+                        <td><a href="#"><span class="badge badge-success" data-toggle="modal" data-target="#ground_modal">Edit</span></a></td>
                     </tr>
+
+                    <!-- Ground Stops Edit Form MODAL -->
+
+                    <div class="modal fade" id="ground_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit: Ground Stop Programs</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Airport</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$ground->airport}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Next Update Time</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$ground->time}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Scope</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$ground->scope}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleFormControlSelect2">Reason</label>
+                                <select  class="form-control" id="exampleFormControlSelect2">
+                                    @foreach ($reasons as $reason)
+                                      <option>{{$reason->name}}</option>
+                                    @endforeach
+                                </select>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    @endforeach
                 </table>
             </center>
         </div>
@@ -136,7 +191,6 @@
             <center>
                 <br><br>
                 <h3>Delay Info</h3>
-                <a href="#"><span class="badge badge-success" data-toggle="modal" data-target="#exampleModal">Edit</span></a>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -145,12 +199,68 @@
                             <th>DD</th>
                             <th>TIME</th>
                             <th>REASON</th>
+                            <th>Actions</th>
                         </tr>  
                     </thead> 
+                    @foreach ($delay as $delay)
                     <tr>
-                        <td></td>
-                    </tr>
-                </table>
+                        <td>{{$delay->airport}}</td>
+                        <td>{{$delay->ad}}</td>
+                        <td>{{$delay->dd}}</td>
+                        <td>{{$delay->time}}</td>
+                        <td>{{$delay->reasons->name}}</td>
+                        <td><a href="#"><span class="badge badge-success" data-toggle="modal" data-target="#delay_modal">Edit</span></a></td>
+                    </tr>      
+
+                    <!-- Delay Info Edit Form MODAL -->
+
+                    <div class="modal fade" id="delay_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit: Delay Information</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Airport</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$delay->airport}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">AD</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$delay->ad}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">DD</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$delay->dd}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleFormControlInput1">Next Update Time</label>
+                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="{{$delay->time}}">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleFormControlSelect2">Reason</label>
+                                <select  class="form-control" id="exampleFormControlSelect2">
+                                    @foreach ($reasons as $reason)
+                                      <option>{{$reason->name}}</option>
+                                    @endforeach
+                                </select>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    @endforeach          
+                  </table>
             </center>
         </div>
      </div>
